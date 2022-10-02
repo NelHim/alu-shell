@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #while loop
 
 
@@ -14,4 +13,4 @@ do
 
  ((count++))
 
-done
+ done
