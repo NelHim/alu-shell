@@ -2,7 +2,6 @@
 #until loop
 
 
-
 count=0
 
 until [ $count -eq 10 ]
