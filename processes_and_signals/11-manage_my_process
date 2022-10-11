@@ -1,27 +1,43 @@
-#!/usr/bin/env bash
-# init script to manage the process in manage_my_process script
-#pid_file="/var/run/my_process.pid"
-case "$1" in
-	
-	start)
-		
-		./manage_my_process &
-		echo "$!" > /var/run/my_process.pid
-		echo "manage_my_process started"		        ;;	     
-	stop)
-		pkill -f ./manage_my_process  
-		rm /var/run/my_process.pid
-		echo "manage_my_process stopped"
-		;;
-	restart)
+ges the manage_process
 
-		pkill -f ./manage_my_process
-		./manage_my_process &
-		echo "$!" > /var/run/my_process.pid			echo "manage_my_process restarted"
-		;;
-	*)
+file=/var/run/my_process.pid
 
-		# make sure to handle no parameter
-		echo "Usage: manage_my_process {start|stop|restart}"					
-		exit 1
-esac
+if [ "$1" == "start" ];
+
+then
+
+	    ./manage_my_process &
+
+	        sudo bash -c "echo $! > $file"
+
+		    echo "manage_my_process started"
+
+	    elif [ "$1" == "stop" ];
+
+	    then
+
+		        pkill -f ./manage_my_process
+
+			    sudo rm $file
+
+			        echo "manage_my_process stopped"
+
+			elif [ "$1" == "restart" ];
+
+			then
+
+				    pkill -f ./manage_my_process
+
+				        sudo rm $file
+
+					    ./manage_my_process &
+
+					        sudo bash -c "echo $! > $file"
+
+						    echo "manage_my_process restarted"
+
+					    else
+
+						        echo "Usage: manage_my_process {start|stop|restart}"
+
+fi
