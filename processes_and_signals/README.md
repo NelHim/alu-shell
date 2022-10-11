@@ -1,1 +1,1 @@
-I am on my way to be a grerat programmer
+I am on my way to being a great programmer
